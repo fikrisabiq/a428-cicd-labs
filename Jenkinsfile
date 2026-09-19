@@ -12,7 +12,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'npm install'
+                sh 'npm install --prefer-offline --no-audit --progress=false'
+            }
+        }
+        stage('Test') { 
+            steps {
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
